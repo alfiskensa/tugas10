@@ -146,30 +146,33 @@ class CetakNilai extends CI_Controller {
 		// exit;
 		$no = 1; 
 		$numrow = 5; 
-		foreach($siswa as $data){ 
-		  $sheet->setCellValue('A'.$numrow, $no);
-		  $sheet->setCellValue('B'.$numrow, $data->nim);
-		  $sheet->setCellValue('C'.$numrow, $data->nama);
-		  $sheet->setCellValue('D'.$numrow, $data->tugas);
-		  $sheet->setCellValue('E'.$numrow, $data->uts);
-		  $sheet->setCellValue('F'.$numrow, $data->uas);
-		  $sheet->setCellValue('G'.$numrow, $data->nilai_akhir);
-		  $sheet->setCellValue('H'.$numrow, $data->grade);
-		  
-		  
-		  $sheet->getStyle('A'.$numrow)->applyFromArray($style_row);
-		  $sheet->getStyle('B'.$numrow)->applyFromArray($style_row);
-		  $sheet->getStyle('C'.$numrow)->applyFromArray($style_row);
-		  $sheet->getStyle('D'.$numrow)->applyFromArray($style_row);
-		  $sheet->getStyle('E'.$numrow)->applyFromArray($style_row);
-		  $sheet->getStyle('F'.$numrow)->applyFromArray($style_row);
-		  $sheet->getStyle('G'.$numrow)->applyFromArray($style_row);
-		  $sheet->getStyle('H'.$numrow)->applyFromArray($style_row);
-
-		  
-		  $no++; 
-		  $numrow++; 
+		if(!empty($data)){
+			foreach($siswa as $data){ 
+				$sheet->setCellValue('A'.$numrow, $no);
+				$sheet->setCellValue('B'.$numrow, $data->nim);
+				$sheet->setCellValue('C'.$numrow, $data->nama);
+				$sheet->setCellValue('D'.$numrow, $data->tugas);
+				$sheet->setCellValue('E'.$numrow, $data->uts);
+				$sheet->setCellValue('F'.$numrow, $data->uas);
+				$sheet->setCellValue('G'.$numrow, $data->nilai_akhir);
+				$sheet->setCellValue('H'.$numrow, $data->grade);
+				
+				
+				$sheet->getStyle('A'.$numrow)->applyFromArray($style_row);
+				$sheet->getStyle('B'.$numrow)->applyFromArray($style_row);
+				$sheet->getStyle('C'.$numrow)->applyFromArray($style_row);
+				$sheet->getStyle('D'.$numrow)->applyFromArray($style_row);
+				$sheet->getStyle('E'.$numrow)->applyFromArray($style_row);
+				$sheet->getStyle('F'.$numrow)->applyFromArray($style_row);
+				$sheet->getStyle('G'.$numrow)->applyFromArray($style_row);
+				$sheet->getStyle('H'.$numrow)->applyFromArray($style_row);
+	  
+				
+				$no++; 
+				$numrow++; 
+			  }
 		}
+		
 		
 		$sheet->getColumnDimension('A')->setWidth(5); 
 		$sheet->getColumnDimension('B')->setWidth(15); 

@@ -51,7 +51,8 @@
             <tbody>
                 
 				<tr>
-				<?php for ($i = 0; $i <count($list_nilai); $i++) {
+				<?php if(!empty($list_nilai)){
+					for ($i = 0; $i <count($list_nilai); $i++) {
 					$dataNilai = $list_nilai[$i];
 					?>
 					<td scope="row"> <?php echo ($i+1); ?> </td>
@@ -64,7 +65,9 @@
 					<td > <?php echo $dataNilai->grade; ?> </td>
 
 				</tr>
-				<?php } ?>
+				<?php } 
+				}
+				?>
 				
             </tbody>
         </table>
