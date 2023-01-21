@@ -50,17 +50,12 @@ class NilaiModel extends CI_Model {
 
 		public function getDataNilai($kode_mk){
 			$data = $this->getDataByKodeMk($kode_mk);
-			$nilai;
-			foreach ($data as $value) {
-				$nilai = new stdClass();
-				$nilai->nim = $value->nim;
-				$nilai->nama = $value->nama;
-				$nilai->tugas = $value->tugas;
-				$nilai->uts = $value->uts;
-				$nilai->uas =$value->uas;
-				$nilai->nilai_akhir = $this->getNilaiAkhir($value->tugas, $value->uts, $value->uas);
-				$nilai->grade = $this->getGrade($nilai->nilai_akhir);
-				$listNilai[] = $nilai;
+			$listNilai = [];
+			for ($i = 0; $i < count($data); $i++) {
+				$value = $data[$i];
+				$value->nilai_akhir = $this->getNilaiAkhir($value->tugas, $value->uts, $value->uas);
+				$value->grade = $this->getGrade($value->nilai_akhir);
+				$listNilai[$i] = $value;
 			}
 			return $listNilai;
 
