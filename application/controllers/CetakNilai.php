@@ -48,23 +48,26 @@ class CetakNilai extends CI_Controller {
 	}
 
 	public function exportPDF(){
-// panggil library yang kita buat sebelumnya yang bernama pdfgenerator
-$this->load->library('pdfgenerator');
-        
-// title dari pdf
-$this->data['title_pdf'] = 'Laporan Penjualan Toko Kita';
+		// panggil library yang kita buat sebelumnya yang bernama pdfgenerator
+		$this->load->library('pdfgenerator');
+				
+		// title dari pdf
+		$this->data['title_pdf'] = 'Laporan Nilai Mahasiswa';
 
-// filename dari pdf ketika didownload
-$file_pdf = 'laporan_penjualan_toko_kita';
-// setting paper
-$paper = 'A4';
-//orientasi paper potrait / landscape
-$orientation = "portrait";
+		$this->data['list_nilai'] = $this->nilaimodel->view();;
 
-$html = $this->load->view('laporan_pdf',$this->data, true);	    
+		// filename dari pdf ketika didownload
+		$file_pdf = 'Nilai Mahasiswa';
+		// setting paper
+		$paper = 'A4';
+		//orientasi paper potrait / landscape
+		$orientation = "portrait";
 
-// run dompdf
-$this->pdfgenerator->generate($html, $file_pdf,$paper,$orientation);
+		$html = $this->load->view('laporan_pdf',$this->data, true);
+		
+
+		// run dompdf
+		$this->pdfgenerator->generate($html, $file_pdf,$paper,$orientation);
 	}
 
 	public function exportExcel(){
@@ -96,7 +99,7 @@ $this->pdfgenerator->generate($html, $file_pdf,$paper,$orientation);
 			'left' => ['borderStyle'  => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN] // Set border left dengan garis tipis
 		  ]
 		];
-		$sheet->setCellValue('A1', "DATA SISWA"); // Set kolom A1 dengan tulisan "DATA SISWA"
+		$sheet->setCellValue('A1', "DATA nILAI MAHASISWA"); // Set kolom A1 dengan tulisan "DATA SISWA"
 		$sheet->mergeCells('A1:E1'); // Set Merge Cell pada kolom A1 sampai E1
 		$sheet->getStyle('A1')->getFont()->setBold(true); // Set bold kolom A1
 		// Buat header tabel nya pada baris ke 3

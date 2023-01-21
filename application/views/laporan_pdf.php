@@ -1,5 +1,5 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title><?= $title_pdf;?></title>
+        <title><?php echo $title_pdf;?></title>
         <style>
             #table {
                 font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
@@ -27,20 +27,20 @@
     </head>
     <body>
         <div style="text-align:center">
-            <h3> Laporan PDF Toko Kita</h3>
+            <h3> Laporan Nilai</h3>
         </div>
         <table id="table">
             <thead>
                 <tr>
                     <th>No.</th>
-                    <th>Nama Produk</th>
-                    <th>Harga Jual</th>
-                    <th>Terjual</th>
-                    <th>Tanggal Transaksi</th>
+                    <th>NIM</th>
+                    <th>Nilai Tugas</th>
+                    <th>Nilai UTS</th>
+                    <th>Nilai UAS</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <!-- <tr>
                     <td scope="row">1</td>
                     <td>Kacang Goreng</td>
                     <td>Rp5.000,-</td>
@@ -67,8 +67,21 @@
                     <td>Rp14.000,-</td>
                     <td>2</td>
                     <td>25 Oktober 2020, 14:04:03</td>
-                </tr>
+                </tr> -->
+				<tr>
+				<?php for ($i = 0; $i <count($list_nilai); $i++) {
+					$dataNilai = $list_nilai[$i];
+					?>
+					<td scope="row"> <?php echo ($i+1); ?> </td>
+					<td > <?php echo $dataNilai->nim; ?> </td>
+					<td > <?php echo $dataNilai->tugas; ?> </td>
+					<td > <?php echo $dataNilai->uts; ?> </td>
+					<td > <?php echo $dataNilai->uas; ?> </td>
+				</tr>
+				<?php } ?>
+				
             </tbody>
         </table>
+
     </body>
 </html>
