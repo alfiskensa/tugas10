@@ -146,7 +146,7 @@ class CetakNilai extends CI_Controller {
 		// exit;
 		$no = 1; 
 		$numrow = 5; 
-		if(!empty($data)){
+		if(!empty($siswa)){
 			foreach($siswa as $data){ 
 				$sheet->setCellValue('A'.$numrow, $no);
 				$sheet->setCellValue('B'.$numrow, $data->nim);

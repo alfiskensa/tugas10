@@ -66,7 +66,9 @@
 
 				</tr>
 				<?php } 
-				}
+				}else{?>
+					</tr>
+				<?php }
 				?>
 				
             </tbody>
